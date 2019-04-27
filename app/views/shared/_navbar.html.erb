@@ -21,6 +21,7 @@
           <p class="p-0 m-0 nav-link dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" ><%= current_user.first_name %>'s Diary</p>
 
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <%= link_to "Dashboard", user_cards_path(current_user), class: "dropdown-item"  %>
             <%= link_to "LOG OUT", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
