@@ -1,0 +1,13 @@
+.button-paleaqua {
+  background-color: $pale-aqua;
+  padding: 10px 30px;
+  border-radius: 50px;
+  color: white;
+  &:hover {
+    text-decoration: none;
+    background-color: $pale-aqua;
+    padding: 10px 30px;
+    border-radius: 50px;
+    color: white;
+  }
+}
