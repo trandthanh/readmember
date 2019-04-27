@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon p-3">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon py-3 px-4">
   <%= link_to root_path, class: "navbar-brand" do %>
     <%= image_tag "readmember-logo.png" %>
     <% end %>
@@ -11,11 +11,15 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
-        <li class="nav-item active">
-          <%= link_to "User's Diary", "#", class: "nav-link" %>
-        </li>
+        <!-- <li class="nav-item"> -->
+<!--           <%#= link_to root_path, class: "nav-link" do %>
+            <p class="p-0 m-0"><%= current_user.first_name %>'s Diary</p>
+          <%# end %> -->
+        <!-- </li> -->
         <li class="nav-item dropdown">
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <%#= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <p class="p-0 m-0 nav-link dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" ><%= current_user.first_name %>'s Diary</p>
+
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <%= link_to "LOG OUT", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
