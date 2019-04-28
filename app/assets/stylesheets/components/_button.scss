@@ -11,3 +11,17 @@
     color: white;
   }
 }
+
+.button-platinum {
+  background-color: $platinum;
+  padding: 10px 30px;
+  border-radius: 50px;
+  color: $roman-silver;
+  &:hover {
+    text-decoration: none;
+    background-color: $platinum;
+    padding: 10px 30px;
+    border-radius: 50px;
+    color: $roman-silver;
+  }
+}
