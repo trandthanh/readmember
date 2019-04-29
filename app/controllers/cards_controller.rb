@@ -1,4 +1,6 @@
 class CardsController < ApplicationController
+  before_action :set_card, only: [:edit, :update, :destroy]
+
   def index
   end
 
@@ -26,9 +28,29 @@ class CardsController < ApplicationController
 
   end
 
+  def edit
+  end
+
+  def update
+    if @card.update(card_params)
+      redirect_to card_path(@card)
+    else
+      render 'cards/edit'
+    end
+  end
+
+  def destroy
+    @card.destroy
+    redirect_to books_path
+  end
+
   private
 
   def card_params
     params.require(:card).permit(:category, :title, :author, :publication, :begin, :end, :description, :rating, :cover, :url, :publisher)
+  end
+
+  def set_card
+    @card = Card.find(params[:id])
   end
 end

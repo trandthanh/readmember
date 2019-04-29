@@ -36,6 +36,7 @@
                   <th scope="col">BEGIN DATE</th>
                   <th scope="col">END DATE</th>
                   <th scope="col">RATING</th>
+                  <th scope="col"></th>
                 </tr>
               </thead>
               <tbody>
@@ -51,6 +52,10 @@
                     <td><%= card.begin %></td>
                     <td><%= card.end %></td>
                     <td><%= card.rating %></td>
+                    <td>
+                      <%= link_to "Edit", edit_card_path(card, category: "Book") %>
+                      <%= link_to "Delete", card_path(card), method: :delete, data: { confirm: "Are you sure?"} %>
+                    </td>
                   </tr>
                 <% end %>
               </tbody>

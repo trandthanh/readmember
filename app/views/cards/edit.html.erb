@@ -3,9 +3,9 @@
     <%= render 'shared/sidenav' %>
 
     <div class="col-sm-10 p-5">
-      <h1 class="mb-5">Add a <%= params[:category] %></h1>
+      <h1 class="mb-5">Edit your <%= params[:category] %></h1>
         <%= simple_form_for [@user, @card] do |f| %>
-          <%= f.input :category, label: 'Card Category' %>
+          <%= f.input :category, label: 'Card Category', input_html: {value: params[:category]} %>
           <%= f.input :title, label: "#{params[:category]}'s Title" %>
           <%= f.input :author, label: "#{params[:category]}'s Author" %>
           <%= f.input :publication, label: "Year of Publication" %>
@@ -16,13 +16,9 @@
           <%= f.input :url, label: 'Any related link!' %>
           <%= f.input :publisher, label: "#{params[:category]}'s Publisher" %>
           <div class="mt-5">
-            <%= f.submit "Add a #{params[:category]}", class: "button-paleaqua" %>
+            <%= f.submit "Edit your #{params[:category]}", class: "button-paleaqua" %>
           </div>
         <% end %>
     </div>
   </div>
 </div>
-
-
-
-

@@ -11,10 +11,13 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/books', to: "cards#books"
+
   resources :user do
     resources :cards, only: [:index, :show, :new, :create]
-    get '/books', to: "cards#books"
   end
+
+  resources :cards, only: [:edit, :update, :destroy]
 
   # root to: 'pages#home'
 end
