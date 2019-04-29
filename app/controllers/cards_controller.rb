@@ -1,5 +1,5 @@
 class CardsController < ApplicationController
-  before_action :set_card, only: [:edit, :update, :destroy]
+  before_action :set_card, only: [:show, :edit, :update, :destroy]
 
   def index
   end
@@ -25,7 +25,7 @@ class CardsController < ApplicationController
   end
 
   def show
-
+    @card_notes = Note.where(card_id: @card)
   end
 
   def edit

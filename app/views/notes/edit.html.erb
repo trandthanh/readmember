@@ -1,0 +1,20 @@
+<div class="dashboard">
+  <div class="row">
+    <%= render 'shared/sidenav' %>
+
+    <div class="col-sm-10 p-5">
+      <h1 class="mb-5">Edit your Note</h1>
+        <%= simple_form_for @note do |f| %>
+          <%= f.input :page, label: 'Page Number' %>
+          <%= f.input :quote, label: 'Write down your Quote' %>
+          <%= f.input :remark, label: 'Write down your Note' %>
+          <div class="mt-5">
+            <%= f.submit "Edit your Note", class: "button-paleaqua" %>
+          </div>
+        <% end %>
+      <div class="mt-5">
+        <%= link_to "Back", card_path(@note.card) %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -44,7 +44,7 @@
                   <tr>
                     <th scope="row"><%= index %></th>
                     <td>
-                      <%= link_to user_card_path(current_user, card) do %>
+                      <%= link_to card_path(card) do %>
                         <%= card.title %>
                       <% end %>
                     </td>
