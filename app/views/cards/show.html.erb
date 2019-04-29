@@ -60,7 +60,7 @@
               <% @card_notes.each do |note| %>
                 <div class="note-card p-4 d-flex justify-content-between align-items-center">
                   <div>
-                    <h6 class="mb-3">page <%= note.page %></h6>
+                    <h6 class="mb-3">page <%= note.page %> / <%= note.title %></h6>
                     <p class="font-style-italic m-0 mb-1">"<%= note.quote %>"</p>
                     <p class="m-0 mb-5"><%= note.remark %></p>
 

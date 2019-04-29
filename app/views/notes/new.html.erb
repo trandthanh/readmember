@@ -5,6 +5,11 @@
     <div class="col-sm-10 p-5">
       <h1 class="mb-5">Add a Note</h1>
         <%= simple_form_for [@card, @note] do |f| %>
+          <% if @card.category == "Magazine" %>
+            <%= f.input :title, label: "Article's Title" %>
+          <% else %>
+            <%= f.input :title, label: "Note's Title" %>
+          <% end %>
           <%= f.input :page, label: 'Page Number' %>
           <%= f.input :quote, label: 'Write down your Quote' %>
           <%= f.input :remark, label: 'Write down your Note' %>
