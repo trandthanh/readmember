@@ -3,14 +3,14 @@
     <%= render 'shared/sidenav' %>
 
     <div class="col-sm-10 p-5">
-      <h1 class="mb-5">Add a <%= params[:category] %></h1>
+      <h1 class="mb-5">Add your <%= params[:category] %></h1>
         <%= simple_form_for [@user, @card] do |f| %>
           <%= f.input :category, label: 'Card Category' %>
           <%= f.input :title, label: "#{params[:category]}'s Title" %>
           <%= f.input :author, label: "#{params[:category]}'s Author" %>
           <%= f.input :publication, label: "Year of Publication" %>
           <%= f.input :begin, label: "When did you start the #{params[:category]}?" %>
-          <%= f.input :end, label: "When did you finish it?" %>
+          <%= f.input :finished, label: "When did you finish it?" %>
           <%= f.input :description, label: "Write your own brief!" %>
           <%= f.input :rating, label: "Did you like what you read? (rate out of 5)" %>
           <%= f.input :url, label: 'Any related link!' %>

@@ -20,6 +20,38 @@ class CardsController < ApplicationController
     @books_read_average_month = books.fdiv(month)
   end
 
+  def articles
+    @article_cards = Card.where(category: "Article", user_id: current_user)
+
+    @articles_read_month = @article_cards.where('extract(month from finished) = ? AND extract(year from finished) = ?', Date.today.month, Date.today.year)
+
+
+    articles = @article_cards.count
+    if (DateTime.now.year * 12 + DateTime.now.month) - (current_user.created_at.year * 12 + current_user.created_at.month) == 0
+      month = 1
+    else
+      month = (DateTime.now.year * 12 + DateTime.now.month) - (current_user.created_at.year * 12 + current_user.created_at.month)
+    end
+
+    @articles_read_average_month = articles.fdiv(month)
+  end
+
+  def magazines
+    @magazine_cards = Card.where(category: "Magazine", user_id: current_user)
+
+    @magazines_read_month = @magazine_cards.where('extract(month from finished) = ? AND extract(year from finished) = ?', Date.today.month, Date.today.year)
+
+
+    magazines = @magazine_cards.count
+    if (DateTime.now.year * 12 + DateTime.now.month) - (current_user.created_at.year * 12 + current_user.created_at.month) == 0
+      month = 1
+    else
+      month = (DateTime.now.year * 12 + DateTime.now.month) - (current_user.created_at.year * 12 + current_user.created_at.month)
+    end
+
+    @magazines_read_average_month = magazines.fdiv(month)
+  end
+
   def new
     @user = current_user
     @card = Card.new

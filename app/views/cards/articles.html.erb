@@ -5,35 +5,35 @@
     <div class="col-sm-10 pl-0">
       <div class="row p-4">
         <div class="col p-3 mx-2 dashboard-stats">
-          <h6>BOOKS READ THIS MONTH</h6>
-          <% if @books_read_month.nil? %>
+          <h6>ARTICLES READ THIS MONTH</h6>
+          <% if @articles_read_month.nil? %>
             <h1>0</h1>
           <% else %>
-            <h1><%= @books_read_month.count %></h1>
+            <h1><%= @articles_read_month.count %></h1>
           <% end %>
         </div>
         <div class="col p-3 mx-2 dashboard-stats">
-          <h6>AVERAGE BOOKS READ PER MONTH</h6>
-          <% if @books_read_month.nil? %>
+          <h6>AVERAGE ARTICLES READ PER MONTH</h6>
+          <% if @articles_read_month.nil? %>
             <h1>0</h1>
           <% else %>
-            <h1><%= @books_read_average_month %></h1>
+            <h1><%= @articles_read_average_month %></h1>
           <% end %>
         </div>
         <div class="col p-3 mx-2 dashboard-stats">
-          <h6>TOTAL BOOKS READ</h6>
-          <h1><%= @book_cards.count %></h1>
+          <h6>TOTAL ARTICLES READ</h6>
+          <h1><%= @article_cards.count %></h1>
         </div>
       </div>
 
       <div class="row px-4 pb-4">
         <div class="col dashboard-table p-3 mx-2">
           <div class="d-flex justify-content-between">
-            <h6>YOUR BOOK CARDS</h6>
-            <%= link_to "+ book card", new_user_card_path(current_user, category: "Book"), class: "button-platinum mr-2" %>
+            <h6>YOUR ARTICLE CARDS</h6>
+            <%= link_to "+ article card", new_user_card_path(current_user, category: "Article"), class: "button-platinum mr-2" %>
           </div>
-          <% if @book_cards.empty? %>
-            <p>No books yet! Hurry to read one!</p>
+          <% if @article_cards.empty? %>
+            <p>No articles yet! Hurry to read one!</p>
           <% else %>
             <table class="table mt-5">
               <thead>
@@ -48,7 +48,7 @@
                 </tr>
               </thead>
               <tbody>
-                <% @book_cards.each_with_index do |card, index| %>
+                <% @article_cards.each_with_index do |card, index| %>
                   <tr>
                     <th scope="row"><%= index %></th>
                     <td>
@@ -74,3 +74,5 @@
     </div>
   </div>
 </div>
+
+

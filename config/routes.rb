@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   end
 
   get '/books', to: "cards#books"
+  get '/articles', to: "cards#articles"
+  get '/magazines', to: "cards#magazines"
 
   resources :user do
     resources :cards, only: [:index, :new, :create]
