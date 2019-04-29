@@ -29,8 +29,22 @@
       <div class="row px-4 pb-4">
         <div class="col dashboard-table p-3 mx-2">
           <div class="d-flex justify-content-between">
-            <h6>YOUR BOOK CARDS</h6>
-            <%= link_to "+ book card", new_user_card_path(current_user, category: "Book"), class: "button-platinum mr-2" %>
+            <div>
+              <h6>YOUR BOOK CARDS</h6>
+            </div>
+
+
+            <div class="d-flex align-items-center">
+              <%= form_tag books_path, class: "mr-2", method: :get do %>
+                <%= text_field_tag :query,
+                  params[:query],
+                  class: "form-control search-bar",
+                  placeholder: "Find a book"
+                %>
+              <% end %>
+
+              <%= link_to "+ book card", new_user_card_path(current_user, category: "Book"), class: "button-platinum mr-2" %>
+            </div>
           </div>
           <% if @book_cards.empty? %>
             <p>No books yet! Hurry to read one!</p>

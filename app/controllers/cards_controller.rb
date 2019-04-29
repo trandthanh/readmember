@@ -5,12 +5,18 @@ class CardsController < ApplicationController
   end
 
   def books
-    @book_cards = Card.where(category: "Book", user_id: current_user)
+    user_book_cards = Card.where(category: "Book", user_id: current_user)
 
-    @books_read_month = @book_cards.where('extract(month from finished) = ? AND extract(year from finished) = ?', Date.today.month, Date.today.year)
+    if params[:query].present?
+      sql_query = "title ILIKE :query OR author ILIKE :query"
+      @book_cards = user_book_cards.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @book_cards = user_book_cards
+    end
 
+    @books_read_month = user_book_cards.where('extract(month from finished) = ? AND extract(year from finished) = ?', Date.today.month, Date.today.year)
 
-    books = @book_cards.count
+    books = user_book_cards.count
     if (DateTime.now.year * 12 + DateTime.now.month) - (current_user.created_at.year * 12 + current_user.created_at.month) == 0
       month = 1
     else
@@ -21,12 +27,18 @@ class CardsController < ApplicationController
   end
 
   def articles
-    @article_cards = Card.where(category: "Article", user_id: current_user)
+    user_article_cards = Card.where(category: "Article", user_id: current_user)
 
-    @articles_read_month = @article_cards.where('extract(month from finished) = ? AND extract(year from finished) = ?', Date.today.month, Date.today.year)
+    if params[:query].present?
+      sql_query = "title ILIKE :query OR author ILIKE :query"
+      @article_cards = user_article_cards.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @article_cards = user_article_cards
+    end
 
+    @articles_read_month = user_article_cards.where('extract(month from finished) = ? AND extract(year from finished) = ?', Date.today.month, Date.today.year)
 
-    articles = @article_cards.count
+    articles = user_article_cards.count
     if (DateTime.now.year * 12 + DateTime.now.month) - (current_user.created_at.year * 12 + current_user.created_at.month) == 0
       month = 1
     else
@@ -37,12 +49,19 @@ class CardsController < ApplicationController
   end
 
   def magazines
-    @magazine_cards = Card.where(category: "Magazine", user_id: current_user)
+    user_magazine_cards = Card.where(category: "Magazine", user_id: current_user)
 
-    @magazines_read_month = @magazine_cards.where('extract(month from finished) = ? AND extract(year from finished) = ?', Date.today.month, Date.today.year)
+    if params[:query].present?
+      sql_query = "title ILIKE :query OR author ILIKE :query"
+      @magazine_cards = user_magazine_cards.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @magazine_cards = user_magazine_cards
+    end
+
+    @magazines_read_month = user_magazine_cards.where('extract(month from finished) = ? AND extract(year from finished) = ?', Date.today.month, Date.today.year)
 
 
-    magazines = @magazine_cards.count
+    magazines = user_magazine_cards.count
     if (DateTime.now.year * 12 + DateTime.now.month) - (current_user.created_at.year * 12 + current_user.created_at.month) == 0
       month = 1
     else
