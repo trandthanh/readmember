@@ -10,11 +10,13 @@
           <%= f.input :author, label: "#{params[:category]}'s Author" %>
           <%= f.input :publication, label: "Year of Publication" %>
           <%= f.input :begin, label: "When did you start the #{params[:category]}?" %>
-          <%= f.input :end, label: "When did you finish it?" %>
+          <%= f.input :finished, label: "When did you finish it?" %>
           <%= f.input :description, label: "Write your own brief!" %>
           <%= f.input :rating, label: "Did you like what you read? (rate out of 5)" %>
           <%= f.input :url, label: 'Any related link!' %>
           <%= f.input :publisher, label: "#{params[:category]}'s Publisher" %>
+          <%= f.input :cover, label: "A picture of your #{params[:category]} perhaps?" %>
+          <%= f.input :cover_cache, as: :hidden %>
           <div class="mt-5">
             <%= f.submit "Edit your #{params[:category]}", class: "button-paleaqua" %>
           </div>

@@ -118,7 +118,7 @@ class CardsController < ApplicationController
   private
 
   def card_params
-    params.require(:card).permit(:category, :title, :author, :publication, :begin, :end, :description, :rating, :cover, :url, :publisher)
+    params.require(:card).permit(:category, :title, :author, :publication, :begin, :finished, :description, :rating, :cover, :url, :publisher)
   end
 
   def set_card

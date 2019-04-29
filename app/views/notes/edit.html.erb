@@ -8,6 +8,8 @@
           <%= f.input :page, label: 'Page Number' %>
           <%= f.input :quote, label: 'Write down your Quote' %>
           <%= f.input :remark, label: 'Write down your Note' %>
+          <%= f.input :screenshot %>
+          <%= f.input :screenshot_cache, as: :hidden %>
           <div class="mt-5">
             <%= f.submit "Edit your Note", class: "button-paleaqua" %>
           </div>

@@ -38,7 +38,7 @@ class NotesController < ApplicationController
   private
 
   def note_params
-    params.require(:note).permit(:page, :quote, :remark)
+    params.require(:note).permit(:page, :quote, :remark, :screenshot)
   end
 
   def set_note
