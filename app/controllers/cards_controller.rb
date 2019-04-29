@@ -2,21 +2,29 @@ class CardsController < ApplicationController
   before_action :set_card, only: [:show, :edit, :update, :destroy]
 
   def index
+    @user_book_cards = Card.where(category: "Book", user_id: current_user)
+    @recent_book_cards = Card.where(category: "Book", user_id: current_user).order('created_at DESC')
+
+    @user_article_cards = Card.where(category: "Article", user_id: current_user)
+    @recent_article_cards = Card.where(category: "Article", user_id: current_user).order('created_at DESC')
+
+    @user_magazine_cards = Card.where(category: "Magazine", user_id: current_user)
+    @recent_magazine_cards = Card.where(category: "Magazine", user_id: current_user).order('created_at DESC')
   end
 
   def books
-    user_book_cards = Card.where(category: "Book", user_id: current_user)
+    @user_book_cards = Card.where(category: "Book", user_id: current_user)
 
     if params[:query].present?
       sql_query = "title ILIKE :query OR author ILIKE :query"
-      @book_cards = user_book_cards.where(sql_query, query: "%#{params[:query]}%")
+      @book_cards = @user_book_cards.where(sql_query, query: "%#{params[:query]}%")
     else
-      @book_cards = user_book_cards
+      @book_cards = @user_book_cards
     end
 
-    @books_read_month = user_book_cards.where('extract(month from finished) = ? AND extract(year from finished) = ?', Date.today.month, Date.today.year)
+    @books_read_month = @user_book_cards.where('extract(month from finished) = ? AND extract(year from finished) = ?', Date.today.month, Date.today.year)
 
-    books = user_book_cards.count
+    books = @user_book_cards.count
     if (DateTime.now.year * 12 + DateTime.now.month) - (current_user.created_at.year * 12 + current_user.created_at.month) == 0
       month = 1
     else
@@ -27,18 +35,18 @@ class CardsController < ApplicationController
   end
 
   def articles
-    user_article_cards = Card.where(category: "Article", user_id: current_user)
+    @user_article_cards = Card.where(category: "Article", user_id: current_user)
 
     if params[:query].present?
       sql_query = "title ILIKE :query OR author ILIKE :query"
-      @article_cards = user_article_cards.where(sql_query, query: "%#{params[:query]}%")
+      @article_cards = @user_article_cards.where(sql_query, query: "%#{params[:query]}%")
     else
-      @article_cards = user_article_cards
+      @article_cards = @user_article_cards
     end
 
-    @articles_read_month = user_article_cards.where('extract(month from finished) = ? AND extract(year from finished) = ?', Date.today.month, Date.today.year)
+    @articles_read_month = @user_article_cards.where('extract(month from finished) = ? AND extract(year from finished) = ?', Date.today.month, Date.today.year)
 
-    articles = user_article_cards.count
+    articles = @user_article_cards.count
     if (DateTime.now.year * 12 + DateTime.now.month) - (current_user.created_at.year * 12 + current_user.created_at.month) == 0
       month = 1
     else
@@ -49,19 +57,19 @@ class CardsController < ApplicationController
   end
 
   def magazines
-    user_magazine_cards = Card.where(category: "Magazine", user_id: current_user)
+    @user_magazine_cards = Card.where(category: "Magazine", user_id: current_user)
 
     if params[:query].present?
       sql_query = "title ILIKE :query OR author ILIKE :query"
-      @magazine_cards = user_magazine_cards.where(sql_query, query: "%#{params[:query]}%")
+      @magazine_cards = @user_magazine_cards.where(sql_query, query: "%#{params[:query]}%")
     else
-      @magazine_cards = user_magazine_cards
+      @magazine_cards = @user_magazine_cards
     end
 
-    @magazines_read_month = user_magazine_cards.where('extract(month from finished) = ? AND extract(year from finished) = ?', Date.today.month, Date.today.year)
+    @magazines_read_month = @user_magazine_cards.where('extract(month from finished) = ? AND extract(year from finished) = ?', Date.today.month, Date.today.year)
 
 
-    magazines = user_magazine_cards.count
+    magazines = @user_magazine_cards.count
     if (DateTime.now.year * 12 + DateTime.now.month) - (current_user.created_at.year * 12 + current_user.created_at.month) == 0
       month = 1
     else
