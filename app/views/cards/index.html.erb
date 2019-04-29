@@ -17,15 +17,15 @@
           <div class="col dashboard-table p-3 mx-2">
             <div class="d-flex justify-content-between align-items-center">
               <div>
-                <h6>YOUR BOOK CARDS</h6>
+                <h6 class="m-0">YOUR BOOK CARDS</h6>
               </div>
 
               <div class="d-flex align-items-center">
-                <%= link_to "+ book card", new_user_card_path(current_user, category: "Book"), class: "button-platinum mr-2" %>
+                <%= link_to "+ book card", new_user_card_path(current_user, category: "Book"), class: "button-small-platinum mr-2" %>
               </div>
             </div>
             <% if @recent_book_cards.empty? %>
-              <p>No books yet! Hurry to read one!</p>
+              <p class="mt-5">No books yet! Hurry to read one!</p>
             <% else %>
               <table class="table mt-5">
                 <thead>
@@ -68,15 +68,15 @@
           <div class="col dashboard-table p-3 mx-2">
             <div class="d-flex justify-content-between align-items-center">
               <div>
-                <h6>YOUR ARTICLE CARDS</h6>
+                <h6 class="m-0">YOUR ARTICLE CARDS</h6>
               </div>
 
               <div class="d-flex align-items-center">
-                <%= link_to "+ article card", new_user_card_path(current_user, category: "Article"), class: "button-platinum mr-2" %>
+                <%= link_to "+ article card", new_user_card_path(current_user, category: "Article"), class: "button-small-platinum mr-2" %>
               </div>
             </div>
             <% if @recent_article_cards.empty? %>
-              <p>No articles yet! Hurry to read one!</p>
+              <p class="mt-5">No articles yet! Hurry to read one!</p>
             <% else %>
               <table class="table mt-5">
                 <thead>
@@ -119,15 +119,15 @@
           <div class="col dashboard-table p-3 mx-2">
             <div class="d-flex justify-content-between align-items-center">
               <div>
-                <h6>YOUR MAGAZINE CARDS</h6>
+                <h6 class="m-0">YOUR MAGAZINE CARDS</h6>
               </div>
 
               <div class="d-flex align-items-center">
-                <%= link_to "+ magazine card", new_user_card_path(current_user, category: "Magazine"), class: "button-platinum mr-2" %>
+                <%= link_to "+ magazine card", new_user_card_path(current_user, category: "Magazine"), class: "button-small-platinum mr-2" %>
               </div>
             </div>
             <% if @recent_magazine_cards.empty? %>
-              <p>No magazines yet! Hurry to read one!</p>
+              <p class="mt-5">No magazines yet! Hurry to read one!</p>
             <% else %>
               <table class="table mt-5">
                 <thead>

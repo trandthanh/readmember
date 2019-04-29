@@ -27,3 +27,20 @@
     color: $roman-silver;
   }
 }
+
+.button-small-platinum {
+  background-color: $platinum;
+  padding: 10px 15px;
+  border-radius: 50px;
+  color: $roman-silver;
+  border: 0;
+  font-size: 11px;
+  &:hover {
+    text-decoration: none;
+    background-color: $platinum;
+    padding: 10px 15px;
+    border-radius: 50px;
+    color: $roman-silver;
+    font-size: 11px;
+  }
+}
