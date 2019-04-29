@@ -6,15 +6,23 @@
       <div class="row p-4">
         <div class="col p-3 mx-2 dashboard-stats">
           <h6>BOOKS READ THIS MONTH</h6>
-          <h1>0</h1>
+          <% if @books_read_month.nil? %>
+            <h1>0</h1>
+          <% else %>
+            <h1><%= @books_read_month.count %></h1>
+          <% end %>
         </div>
         <div class="col p-3 mx-2 dashboard-stats">
           <h6>AVERAGE BOOKS READ PER MONTH</h6>
-          <h1>0</h1>
+          <% if @books_read_month.nil? %>
+            <h1>0</h1>
+          <% else %>
+            <h1><%= @books_read_average_month %></h1>
+          <% end %>
         </div>
         <div class="col p-3 mx-2 dashboard-stats">
           <h6>TOTAL BOOKS READ</h6>
-          <h1>0</h1>
+          <h1><%= @book_cards.count %></h1>
         </div>
       </div>
 
@@ -50,7 +58,7 @@
                     </td>
                     <td><%= card.author %></td>
                     <td><%= card.begin %></td>
-                    <td><%= card.end %></td>
+                    <td><%= card.finished %></td>
                     <td><%= card.rating %></td>
                     <td>
                       <%= link_to "Edit", edit_card_path(card, category: "Book") %>

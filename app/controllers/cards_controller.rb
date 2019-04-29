@@ -6,6 +6,18 @@ class CardsController < ApplicationController
 
   def books
     @book_cards = Card.where(category: "Book", user_id: current_user)
+
+    @books_read_month = @book_cards.where('extract(month from finished) = ? AND extract(year from finished) = ?', Date.today.month, Date.today.year)
+
+
+    books = @book_cards.count
+    if (DateTime.now.year * 12 + DateTime.now.month) - (current_user.created_at.year * 12 + current_user.created_at.month) == 0
+      month = 1
+    else
+      month = (DateTime.now.year * 12 + DateTime.now.month) - (current_user.created_at.year * 12 + current_user.created_at.month)
+    end
+
+    @books_read_average_month = books.fdiv(month)
   end
 
   def new
