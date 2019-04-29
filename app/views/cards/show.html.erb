@@ -21,9 +21,16 @@
             <%= @card.title %>
           <% end %>
 
-          by <%= @card.author %>
+          <% if @card.category == "Magazine" %>
+            / <%= @card.publication %>
+          <% else %>
+            by <%= @card.author %>
+          <% end %>
+
           </h3>
-          <h5><%= @card.publication %></h5>
+          <% unless @card.category == "Magazine" %>
+            <h5><%= @card.publication %></h5>
+          <% end %>
           <p>Started on <%= @card.begin %> / Finished on <%= @card.finished %></p>
         </div>
         <div class="col p-3 mx-2 dashboard-item">
