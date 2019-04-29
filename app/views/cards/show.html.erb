@@ -9,10 +9,22 @@
       </div>
       <div class="row p-4">
         <div class="col p-4 mx-2 dashboard-item d-flex flex-column align-items-center justify-content-center">
-          <%= cl_image_tag @card.cover, class: "mt-2", height: 300, width: 200, crop: :fill %>
-          <h3 class="mt-4"><%= @card.title %> by <%= @card.author %></h3>
+          <% unless @card.category == "Article" %>
+            <%= cl_image_tag @card.cover, class: "mt-2", height: 300, width: 200, crop: :fill %>
+          <% end %>
+          <h3 class="mt-4">
+          <% if @card.category == "Article" %>
+            <%= link_to @card.url, target: :_blank do %>
+              <%= @card.title %>
+            <% end %>
+          <% else %>
+            <%= @card.title %>
+          <% end %>
+
+          by <%= @card.author %>
+          </h3>
           <h5><%= @card.publication %></h5>
-          <p>Commencé le <%= @card.begin %> / Terminé le <%= @card.finished %></p>
+          <p>Started on <%= @card.begin %> / Finished on <%= @card.finished %></p>
         </div>
         <div class="col p-3 mx-2 dashboard-item">
           <div>

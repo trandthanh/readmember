@@ -7,14 +7,17 @@
         <%= simple_form_for [@user, @card] do |f| %>
           <%= f.input :category, label: 'Card Category', input_html: {value: params[:category]} %>
           <%= f.input :title, label: "#{params[:category]}'s Title" %>
-          <%= f.input :author, label: "#{params[:category]}'s Author" %>
+          <%= f.input :author, label: "#{params[:category]}'s Author / Source" %>
           <%= f.input :publication, label: "Year of Publication" %>
           <%= f.input :begin, label: "When did you start the #{params[:category]}?" %>
-          <%= f.input :finished, label: "When did you finish it?" %>
+          <%#= f.input :finished, label: "When did you finish it?" %>
           <%= f.input :description, label: "Write your own brief!" %>
           <%= f.input :rating, label: "Did you like what you read? (rate out of 5)" %>
-          <%= f.input :url, label: 'Any related link!' %>
-          <%= f.input :publisher, label: "#{params[:category]}'s Publisher" %>
+          <% if params[:category] == "Article" %>
+            <%= f.input :url, label: "#{params[:category]}'s link!" %>
+          <% end %>
+
+          <%= f.input :publisher, label: "#{params[:category]}'s Edition / Publisher" %>
           <%= f.input :cover, label: "A picture of your #{params[:category]} perhaps?" %>
           <%= f.input :cover_cache, as: :hidden %>
           <div class="mt-5">
