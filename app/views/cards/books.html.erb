@@ -22,7 +22,7 @@
         <div class="col dashboard-table p-3 mx-2">
           <div class="d-flex justify-content-between">
             <h6>YOUR BOOK CARDS</h6>
-            <%= link_to "+ book card", new_user_card_path(current_user), class: "button-platinum mr-2" %>
+            <%= link_to "+ book card", new_user_card_path(current_user, category: "Book"), class: "button-platinum mr-2" %>
           </div>
           <% if @book_cards.empty? %>
             <p>No books yet! Hurry to read one!</p>

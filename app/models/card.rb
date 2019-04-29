@@ -1,3 +1,6 @@
 class Card < ApplicationRecord
-  has_many :cards
+  belongs_to :user
+  has_many :notes
+
+  validates :category, inclusion: { in: ["Book", "Article", "Magazine"], message: "%{value} is not a valid card category." }
 end

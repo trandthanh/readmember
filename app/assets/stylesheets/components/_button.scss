@@ -3,6 +3,7 @@
   padding: 10px 30px;
   border-radius: 50px;
   color: white;
+  border: 0;
   &:hover {
     text-decoration: none;
     background-color: $pale-aqua;
@@ -17,6 +18,7 @@
   padding: 10px 30px;
   border-radius: 50px;
   color: $roman-silver;
+  border: 0;
   &:hover {
     text-decoration: none;
     background-color: $platinum;

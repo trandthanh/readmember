@@ -1,7 +1,9 @@
 .sidenav {
   background-color: $pale-aqua;
-  height: 90vh;
+  height: 100vh;
   color: $roman-silver;
+  position: sticky;
+  top: 0;
 
   a {
     color: $roman-silver;
