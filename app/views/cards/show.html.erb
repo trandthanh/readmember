@@ -12,24 +12,25 @@
           <% unless @card.category == "Article" %>
             <%= cl_image_tag @card.cover, class: "mt-2", height: 300, width: 200, crop: :fill %>
           <% end %>
-          <h3 class="mt-4">
-          <% if @card.category == "Article" %>
-            <%= link_to @card.url, target: :_blank do %>
+          <h3 class="mt-4 text-center">
+            <% if @card.category == "Article" %>
+              <%= link_to @card.url, target: :_blank do %>
+                <%= @card.title %>
+              <% end %>
+            <% else %>
               <%= @card.title %>
             <% end %>
-          <% else %>
-            <%= @card.title %>
-          <% end %>
 
-          <% if @card.category == "Magazine" %>
-            / <%= @card.publication %>
-          <% else %>
-            by <%= @card.author %>
-          <% end %>
-
+            <% if @card.category == "Magazine" %>
+              / <%= @card.publication %>
+            <% elsif @card.category == "Article" %>
+              by <%= @card.author %> / <%= @card.publisher %>
+            <% else %>
+              by <%= @card.author %>
+            <% end %>
           </h3>
           <% unless @card.category == "Magazine" %>
-            <h5><%= @card.publication %></h5>
+            <h5 class="mt-4"><%= @card.publication %></h5>
           <% end %>
           <p>Started on <%= @card.begin %> / Finished on <%= @card.finished %></p>
         </div>
@@ -58,7 +59,7 @@
         <div class="col dashboard-item p-3 mx-2">
           <div class="d-flex justify-content-between">
             <h2>Notes & Quotes</h2>
-            <%= link_to "+ book note", new_card_note_path(@card), class: "button-platinum mr-2" %>
+            <%= link_to "+ #{@card.category} note", new_card_note_path(@card), class: "button-platinum mr-2" %>
           </div>
           <div class="mt-5">
             <% if @card_notes.empty? %>
@@ -67,7 +68,14 @@
               <% @card_notes.each do |note| %>
                 <div class="note-card p-4 d-flex justify-content-between align-items-center">
                   <div>
-                    <h6 class="mb-3">page <%= note.page %> / <%= note.title %></h6>
+                    <h6 class="mb-3">
+                      <% unless @card.category =="Article" %>
+                        page <%= note.page %>
+                      <% end %>
+                        <% unless note.title.blank? %>
+                          / <%= note.title %>
+                        <% end %>
+                    </h6>
                     <p class="font-style-italic m-0 mb-1">"<%= note.quote %>"</p>
                     <p class="m-0 mb-5"><%= note.remark %></p>
 
